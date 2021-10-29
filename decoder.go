@@ -522,7 +522,5 @@ func (d *Decoder) decodeSliceAny() ([]interface{}, error) {
 }
 
 func bytesToString(b []byte) string {
-	sliceHeader := (*reflect.SliceHeader)(unsafe.Pointer(&b))
-	stringHeader := reflect.StringHeader{Data: sliceHeader.Data, Len: sliceHeader.Len}
-	return *(*string)(unsafe.Pointer(&stringHeader))
+	return *(*string)(unsafe.Pointer(&b))
 }
